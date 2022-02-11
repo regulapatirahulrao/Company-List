@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_filters %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+<h1>Edit Company</h1>
+<br>
+<table>
+<form method="POST">
+	{% csrf_token %}
+	{{ form|crispy }}
+	</table><br>
+	<button class="btn btn-primary">Update</button>
+
+{% else %}
+
+<h3>Access Restricted Please login and proceed</h3>
+
+{% endif %}
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+</div>
+{% endblock %}
